@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const userModel = require("../models/userModel");
 const forgotPasswordModel = require("../models/forgotPasswordModel")
 const contactUsModel = require("../models/contactUsModel")
-
 const jwt = require('jsonwebtoken');
 // const verificationModel = require("../models/verificationModel");
 const nodemailer = require('nodemailer');
