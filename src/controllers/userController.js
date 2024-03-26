@@ -244,7 +244,7 @@ const sendForgotPasswordEmail = (email, token) => {
         from: "anmolkadam369@gmail.com",
         to: email,
         subject: "Password Reset",
-        text: `Click the link to reset your password: http://localhost:3001/administration/resetPassword/${token}`,
+        text: `Click the link to reset your password: https://the-salt-legal-backend-1.onrender.com/reset-password/${token}`,
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
