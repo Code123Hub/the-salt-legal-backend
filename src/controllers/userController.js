@@ -244,7 +244,7 @@ const sendForgotPasswordEmail = (email, token) => {
         from: "anmolkadam369@gmail.com",
         to: email,
         subject: "Password Reset",
-        text: `Click the link to reset your password: https://the-salt-legal.vercel.app/reset-password/${token}`,
+        text: `Click the link to reset your password: https://the-salt-legal.vercel.app/#/reset-password/${token}`,
         // http://localhost:3001/administration/resetPassword/${token}
     };
 
