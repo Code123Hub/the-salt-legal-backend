@@ -245,6 +245,7 @@ const sendForgotPasswordEmail = (email, token) => {
         to: email,
         subject: "Password Reset",
         text: `Click the link to reset your password: https://the-salt-legal.vercel.app/reset-password/${token}`,
+        // http://localhost:3001/administration/resetPassword/${token}
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
@@ -361,12 +362,14 @@ const resetPasswordClient = async (req, res) => {
     if (!user) return res.status(400).send({ status: false, message: 'Invalid token' });
     if (user.resetTokenExpires < Date.now())
         return res.status(400).send({ status: false, message: "Token expired" });
-
+        // if (user.resetTokenExpires < Date.now())
+        // return res.status(400).send({ status: false, message: "Token expired" });
+    
     let some = await userModel.findOneAndUpdate(
-        { email: user.email },
-        { $set: { password: newPassword, confirmPassword: confirmPassword } },
-        { new: true }
-    );
+    { email: user.email },
+    { $set: { password: newPassword, confirmPassword: confirmPassword } },
+    { new: true }
+);
     console.log(some);
     return res.json({ message: "Password reset successful" });
 };
