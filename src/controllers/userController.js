@@ -217,7 +217,7 @@ const userLogin = async function (req, res) {
         const expirationInSeconds = parseInt(process.env.EXP_IN);
         let token = jwt.sign(
             { userId: isUserExist._id, exp: Math.floor(Date.now() / 1000) + expirationInSeconds },
-            process.env.JWT_SECRET
+            "NEHA"
         );
 
         let tokenInfo = { userId: isUserExist._id, token: token, email: email };
