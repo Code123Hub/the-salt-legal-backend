@@ -1,5 +1,6 @@
 
 
+// category.js
 const mongoose = require('mongoose');
 
 const categorySchema = new mongoose.Schema({
@@ -10,7 +11,7 @@ const categorySchema = new mongoose.Schema({
   subCategories: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'SubCategory'
-  }],
+}],
   isDeleted: {
     type: Boolean,
     default: false
