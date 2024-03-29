@@ -3,11 +3,10 @@
 
 const express = require("express");
 const mongoose = require("mongoose");
-const port = process.env.PORT || 3001;
+const dotenv = require("dotenv");
 const route = require("./route/routes");
-const path = require('path');
-require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
-
+dotenv.config();
+const port = process.env.PORT || 3001;
 mongoose.set("strictQuery", true);
 const app = express();
 const cors = require('cors')
@@ -26,7 +25,7 @@ app.use((req, res, next) => {
 
 mongoose
   .connect(
-    "mongodb+srv://nehajaiswal:neha123@nehadb.pcorgpc.mongodb.net/legalbackend",
+    process.env.DB_HOST,
     { useNewUrlParser: true }
   )
   .then(() => {
