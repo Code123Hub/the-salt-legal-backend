@@ -36,7 +36,6 @@ router.get('/getContactUs', userController.getContactUs)
 
 // Payment route
 
-
 router.post("/orders", async (req, res) => {
 	try {
         console.log(process.env.KEY_ID)
@@ -100,3 +99,4 @@ router.all('*/', function(req, res){
 })
 
 module.exports = router;
+

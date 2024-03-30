@@ -54,12 +54,32 @@ const createCategory = async function (req, res) {
 // };
 
 
+// const getCategory = async function (req, res) {
+//   try {
+//       let filter = { isDeleted: false };
+//       let savedData = await categoryModel.find(filter).populate('subCategories');
+//       if (savedData.length === 0) {
+//           return res.status(404).send({ status: false, message: "Such Category Not Available" });
+//       } else {
+//           return res.status(200).send({ status: true, data: savedData });
+//       }
+//   } catch (err) {
+//       return res.status(500).send({ status: false, error: err.message });
+//   }
+// };
+
+
+
+
 const getCategory = async function (req, res) {
   try {
       let filter = { isDeleted: false };
-      let savedData = await categoryModel.find(filter).populate('subCategories');
+      console.log("hi from backend")
+      let savedData = await categoryModel.find(filter).populate('subCategories')
+      // let savedData = await categoryModel.find(filter).populate('subCategories').maxTimeMS(30000); 
+      
       if (savedData.length === 0) {
-          return res.status(404).send({ status: false, msg: "Such Category Not Available" });
+          return res.status(404).send({ status: false, message: "Such Category Not Available" });
       } else {
           return res.status(200).send({ status: true, data: savedData });
       }
