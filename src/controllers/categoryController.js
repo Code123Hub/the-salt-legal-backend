@@ -115,7 +115,7 @@ const updateCategory = async function (req, res) {
   };
   
 
-  const deleteCategory = async function (req, res) {
+const deleteCategory = async function (req, res) {
     try {
     
       const categoryId = req.params.categoryId;

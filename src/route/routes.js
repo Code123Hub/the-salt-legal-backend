@@ -42,8 +42,8 @@ router.post("/orders", async (req, res) => {
 
 		const instance = new Razorpay({
 
-			key_id: process.env.KEY_ID,
-			key_secret: process.env.KEY_SECRET,
+			key_id: "rzp_test_UH0rkDW0Rkm44R",
+			key_secret: "aYGP4XMtWqxJZy33SNDtbqlm",
 		});
 
         console.log(process.env.KEY_ID)
