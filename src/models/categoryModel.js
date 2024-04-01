@@ -12,6 +12,10 @@ const categorySchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'SubCategory'
 }],
+price: {
+  type: Number,
+  required: true
+},
   isDeleted: {
     type: Boolean,
     default: false

@@ -8,7 +8,7 @@ const createCategory = async function (req, res) {
     try {
         let categoryData = req.body;
 
-        let { title } = categoryData;
+        let { title, price } = categoryData;
 
         if (Object.keys(categoryData).length == 0)
             return res.status(400).send({ status: false, message: "please provide required fields" });
@@ -25,6 +25,11 @@ const createCategory = async function (req, res) {
 
         if (title == "")
             return res.status(400).send({ status: false, message: "Please Enter  title" });
+
+          // -----------------Price validation
+
+          if (!price)
+          return res.status(400).send({ status: false, message: "price is mandatory" });
 
 
       
