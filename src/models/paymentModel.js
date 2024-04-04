@@ -4,21 +4,14 @@
 
 const mongoose = require('mongoose');
 
-const userDetails = new mongoose.Schema({
+const paymentCard = new mongoose.Schema({
   
-  email:{
+  
+  title:{
     type:String,
     required:true
   },
-  password:{
-    type:String,
-    required:true
-  },
-  confirmPassword: {
-    type:String,
-    required:true
-  },
-  name:{
+  price:{
     type:String,
     required:true
   },
@@ -29,4 +22,4 @@ const userDetails = new mongoose.Schema({
   },
 },{timestamps:true});
 
-module.exports  = mongoose.model('userDetails', userDetails);
+module.exports  = mongoose.model('paymentCard', paymentCard);

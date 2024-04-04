@@ -8,7 +8,7 @@ const Razorpay = require("razorpay");
 const crypto = require("crypto");
 const userController = require("../controllers/userController.js");
 const categoryController = require("../controllers/categoryController.js")
-
+const paymentCardController = require("../controllers/paymentCardController.js");
 const subCategoryController = require("../controllers/subCategoryController.js")
 
 //USER 
@@ -33,6 +33,11 @@ router.delete("/delete/subcategory/:subCategoryId", subCategoryController.delete
 //contact Us
 router.post("/contactUs", userController.contactUs)
 router.get('/getContactUs', userController.getContactUs)
+
+//payment Cards
+router.post("/paymentCard", paymentCardController.createPaymentCard)
+router.get("/getPaymentCard", paymentCardController.getCard);
+
 
 // Payment route
 
@@ -73,7 +78,7 @@ router.post("/verify", async (req, res) => {
 			req.body;
 		const sign = razorpay_order_id + "|" + razorpay_payment_id;
 		const expectedSign = crypto
-			.createHmac("sha256", process.env.KEY_SECRET)
+			.createHmac("sha256", aYGP4XMtWqxJZy33SNDtbqlm)
 			.update(sign.toString())
 			.digest("hex");
 
@@ -99,4 +104,3 @@ router.all('*/', function(req, res){
 })
 
 module.exports = router;
-
