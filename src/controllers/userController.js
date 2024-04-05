@@ -205,7 +205,7 @@ const userLogin = async function (req, res) {
 
         //       
 
-        let isUserExist = await userModel.findOne({ email: email });
+        let isUserExist = await userModel.findOne({ email: email })
 
         if (!isUserExist)
             return res.status(404).send({ status: false, message: "No user found with given Email", });
@@ -214,13 +214,12 @@ const userLogin = async function (req, res) {
 
         if (!passwordCompare) return res.status(400).send({ status: false, message: "Please enter valid password" })
 
-        const expirationInSeconds = parseInt(process.env.EXP_IN);
         let token = jwt.sign(
-            { userId: isUserExist._id, exp: Math.floor(Date.now() / 1000) + expirationInSeconds },
+            { userId: isUserExist._id, exp: Math.floor(Date.now() / 1000) + 86000 },
             "NEHA"
         );
 
-        let tokenInfo = { userId: isUserExist._id, token: token, email: email };
+        let tokenInfo = { userId: isUserExist._id, token: token, email: email,name:isUserExist.name ,isDeleted:isUserExist.isDeleted,choosenPlan:isUserExist.choosenPlan,isPaidUser:isUserExist.isPaidUser};
 
         res.setHeader('x-api-key', token)
 
@@ -445,7 +444,7 @@ const getContactUs = async (req,res)=>{
         return res.status(201).send({ status: true, message: "All data !!!", data: contactUsDetails });
         
     } catch (error) {
-        return res.status(500).send({ status: false, error: err.message });
+        return res.status(500).send({ status: false, error: error.message });
     }
 }
 

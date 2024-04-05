@@ -1,5 +1,3 @@
-
-
 const mongoose = require('mongoose');
 const paymentCardModel = require('../models/paymentModel');
 
@@ -24,8 +22,6 @@ const createPaymentCard = async function (req, res) {
 
         if (title == "")
             return res.status(400).send({ status: false, message: "Please Enter  title" });
-
-          // -----------------Price validation
 
           if (!price)
           return res.status(400).send({ status: false, message: "price is mandatory" });

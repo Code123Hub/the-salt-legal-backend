@@ -21,7 +21,13 @@ const userDetails = new mongoose.Schema({
     type:String,
     required:true
   },
-  
+  isPaidUser:{
+    type:Boolean,
+    default:false
+  },
+  choosenPlan:{
+    type: Array
+  },
   isDeleted:{
     type:Boolean,
     default:false

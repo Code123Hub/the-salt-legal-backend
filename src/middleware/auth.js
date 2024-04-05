@@ -9,23 +9,25 @@ const userModel = require('../models/userModel');
 
 const authentication = (req, res, next) => {
     try {
+        console.log("sssssssssss",req.params.userId)
         let token = req.headers['authorization']
         console.log("authjs",token, req.body)
         if (!token) {
             return res.status(400).send({ status: false, message: "Token not present" })
         }
         token = token.split(" ")
-        console.log(token[1])
+        console.log("token",token[1])
 
-        jwt.verify(token[1], 'neha', function (err, decoded) {
-            if (err) return res.status(401).send({ status: false, message: err.message })
-
-            else {
-                req.userId = decoded.userId
-                console.log("some", req.userId);
-                next()
+        jwt.verify(token[1], 'NEHA', function(err, decoded) {
+            if (err) {
+              return res.status(401).send({ status: false, message: 'Invalid or expired token', error : err.message});
+            } else {
+              req.userId = decoded.userId;
+              console.log("User ID:", req.userId);
+              next();
             }
-        })
+          });
+          
     } catch (error) {
         return res.status(500).send({ status: false, message: error.message })
     }
