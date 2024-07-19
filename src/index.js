@@ -25,7 +25,7 @@ app.use((req, res, next) => {
 
 mongoose
   .connect(
-    "mongodb+srv://nehajaiswal:neha123@nehadb.pcorgpc.mongodb.net/legalbackend",
+    "mongodb://localhost:27017/register",
     { useNewUrlParser: true }
   )
   .then(() => {
