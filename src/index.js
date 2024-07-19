@@ -25,7 +25,7 @@ app.use((req, res, next) => {
 
 mongoose
   .connect(
-    "mongodb://localhost:27017/register",
+    "mongodb://localhost:27017/test",
     { useNewUrlParser: true }
   )
   .then(() => {
