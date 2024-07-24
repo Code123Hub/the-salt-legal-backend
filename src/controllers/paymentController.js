@@ -9,7 +9,7 @@ const payment = async (req, res) => {
     try {
         const instance = new razorpay({
             key_id: "rzp_test_UH0rkDW0Rkm44R",
-			key_secret: "37wZvypjKFYkw128xXapxfjI",
+			key_secret: "aYGP4XMtWqxJZy33SNDtbqlm",
         });
         let requestedData = req.body;
         let{cardId}=requestedData;
